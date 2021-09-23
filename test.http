@@ -1,0 +1,26 @@
+GET http://localhost:3000/storages
+Accept: application/json
+
+###
+POST http://localhost:3000/storage
+Content-Type: application/json
+
+{
+    
+    "name": "test"
+    
+}
+
+###
+GET http://localhost:3000/storage/614c791b6b65879e933489cb
+Accept: application/json
+
+###
+PUT http://localhost:3000/storage/614c791b6b65879e933489cb
+Content-Type: application/json
+
+{
+    "_id": "noupdate",
+    "name": "updated 3",
+    "createdAt": "noUpdate"
+}
