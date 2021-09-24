@@ -1,0 +1,12 @@
+###
+GET http://localhost:3000/storages/614d3b4ed344ffa8bc901bdd/items
+Accept: application/json
+
+###
+POST http://localhost:3000/storages/614d3b4ed344ffa8bc901bdd/items
+Content-Type: application/json
+
+{
+    "name": "product",
+    "price": 2.99
+}
