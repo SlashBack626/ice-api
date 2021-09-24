@@ -12,7 +12,9 @@ import { Storage } from "./types/ZStorage";
 
 const app = express();
 
-const Client = new MongoClient("mongodb://localhost:27017");
+const DBURI = process.env.DB_URL ?? "mongodb://localhost:27017";
+console.log(DBURI);
+const Client = new MongoClient(DBURI);
 const DB = Client.db("icy");
 const Storages = DB.collection<Storage>("storages");
 const Items = DB.collection<Item>("items");
