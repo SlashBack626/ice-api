@@ -7,7 +7,6 @@ const ZStorageSchema = z.object({
    name: z.string(),
    location: z.string().optional(),
    description: z.string().optional(),
-   compartments: z.array(ZObjectId.create()).optional(),
 });
 
 type ZStorage = z.infer<typeof ZStorageSchema>;
