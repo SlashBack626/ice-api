@@ -1,5 +1,5 @@
 import express from "express";
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import RequireJSON from "./middleware/requireJSON";
 import CreateStorageCompartment from "./routes/compartment/createStorageCompartment";
 import DeleteCompartment from "./routes/compartment/deleteCompartment";
@@ -21,7 +21,8 @@ import UpdateStorage from "./routes/storage/updateStorage";
 import { Compartment } from "./types/ZCompartment";
 import { Item } from "./types/ZItem";
 import { Storage } from "./types/ZStorage";
-import { User } from "./types/Zuser";
+import { User } from "./types/ZUser";
+import AuthenticateUser from "./middleware/authenticateUser";
 
 const app = express();
 
@@ -34,7 +35,7 @@ const Items = DB.collection<Item>("items");
 const Compartments = DB.collection<Compartment>("compartments");
 const Users = DB.collection<User>("users");
 
-app.use(express.json());
+app.use(express.json(), AuthenticateUser);
 
 // Get all storages
 app.get("/storages", GetAll(Storages));

@@ -1,5 +1,6 @@
 ###
 GET http://localhost:3000/storages/614d3b4ed344ffa8bc901bdd/items
+Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJ1c2VySUQiOiJUaGlzSXNNeVVzZXJJRCJ9.F3Y5uEy0ywPXdNJA9IDsV5rUu73lBm5rrf0Bpf-t-68
 Accept: application/json
 
 ###
