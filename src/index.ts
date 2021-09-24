@@ -26,13 +26,13 @@ app.use(express.json());
 
 app.get("/storages", GetAll(Storages));
 
-app.post("/storage", RequireJSON, CreateStorage(Storages));
+app.post("/storages", RequireJSON, CreateStorage(Storages));
 
-app.put("/storage/:ID", RequireJSON, UpdateStorage(Storages));
+app.put("/storages/:ID", RequireJSON, UpdateStorage(Storages));
 
-app.get("/storage/:ID", GetStorage(Storages));
+app.get("/storages/:ID", GetStorage(Storages));
 
-app.delete("/storage/:ID", DeleteStorage(Storages));
+app.delete("/storages/:ID", DeleteStorage(Storages));
 
 app.get("/storages/:SID/items", GetItems(Items));
 
