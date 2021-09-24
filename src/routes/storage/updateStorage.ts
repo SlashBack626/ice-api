@@ -4,7 +4,7 @@ import { Storage, ZStorageSchema } from "../../types/ZStorage";
 
 function UpdateStorage(Storages: Collection<Storage>): RequestHandler {
    const updateStorage: RequestHandler = async (req, res) => {
-      const { ID } = req.params;
+      const { ID: SID } = req.params;
       const parsed = ZStorageSchema.partial().safeParse(req.body);
       if (!parsed.success) {
          res.status(400).json(parsed.error);
@@ -13,7 +13,7 @@ function UpdateStorage(Storages: Collection<Storage>): RequestHandler {
       const { data } = parsed;
       try {
          await Storages.updateOne(
-            { _id: new ObjectId(ID) },
+            { _id: new ObjectId(SID) },
             { $set: { ...data } }
          );
          res.sendStatus(200);

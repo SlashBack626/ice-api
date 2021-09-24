@@ -4,13 +4,13 @@ import { Storage } from "../../types/ZStorage";
 
 function GetStorage(Storages: Collection<Storage>): RequestHandler {
    const getStorage: RequestHandler = async (req, res) => {
-      const { ID } = req.params;
-      if (!ObjectId.isValid(ID)) {
+      const { ID: SID } = req.params;
+      if (!ObjectId.isValid(SID)) {
          res.status(400).json({ err: "invalid ObjectId" });
          return;
       }
       try {
-         const data = await Storages.findOne({ _id: new ObjectId(ID) });
+         const data = await Storages.findOne({ _id: new ObjectId(SID) });
          if (!data) {
             res.sendStatus(404);
             return;

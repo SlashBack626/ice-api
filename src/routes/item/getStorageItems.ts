@@ -2,8 +2,8 @@ import { RequestHandler } from "express";
 import { Collection, ObjectId } from "mongodb";
 import { Item } from "../../types/ZItem";
 
-function GetItems(Items: Collection<Item>): RequestHandler {
-   const getItems: RequestHandler = async (req, res) => {
+function GetStorageItems(Items: Collection<Item>): RequestHandler {
+   const getStorageItems: RequestHandler = async (req, res) => {
       const { SID } = req.params;
       if (!ObjectId.isValid(SID)) {
          res.status(400).json({ err: "invalid ObjectId" });
@@ -17,7 +17,7 @@ function GetItems(Items: Collection<Item>): RequestHandler {
          res.status(500).json(error);
       }
    };
-   return getItems;
+   return getStorageItems;
 }
 
-export default GetItems;
+export default GetStorageItems;
