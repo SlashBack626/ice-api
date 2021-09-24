@@ -5,7 +5,9 @@ import { Storage, ZStorageSchema } from "../../types/ZStorage";
 function UpdateStorage(Storages: Collection<Storage>): RequestHandler {
    const updateStorage: RequestHandler = async (req, res) => {
       const { SID } = req.params;
-      const parsed = ZStorageSchema.partial().safeParse(req.body);
+      const parsed = ZStorageSchema.omit({ owner: true })
+         .partial()
+         .safeParse(req.body);
       if (!parsed.success) {
          res.status(400).json(parsed.error);
          return;

@@ -5,6 +5,7 @@ import ZObjectId from "./ZObjectIdSchema";
 
 const ZStorageSchema = z.object({
    name: z.string(),
+   owner: ZObjectId.create(),
    location: z.string().optional(),
    description: z.string().optional(),
 });

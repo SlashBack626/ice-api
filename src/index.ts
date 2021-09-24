@@ -21,6 +21,7 @@ import UpdateStorage from "./routes/storage/updateStorage";
 import { Compartment } from "./types/ZCompartment";
 import { Item } from "./types/ZItem";
 import { Storage } from "./types/ZStorage";
+import { User } from "./types/Zuser";
 
 const app = express();
 
@@ -31,6 +32,7 @@ const DB = Client.db("icy");
 const Storages = DB.collection<Storage>("storages");
 const Items = DB.collection<Item>("items");
 const Compartments = DB.collection<Compartment>("compartments");
+const Users = DB.collection<User>("users");
 
 app.use(express.json());
 
