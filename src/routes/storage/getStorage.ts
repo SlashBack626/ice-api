@@ -4,7 +4,7 @@ import { Storage } from "../../types/ZStorage";
 
 function GetStorage(Storages: Collection<Storage>): RequestHandler {
    const getStorage: RequestHandler = async (req, res) => {
-      const { ID: SID } = req.params;
+      const { SID } = req.params;
       if (!ObjectId.isValid(SID)) {
          res.status(400).json({ err: "invalid ObjectId" });
          return;

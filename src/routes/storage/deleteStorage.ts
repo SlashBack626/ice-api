@@ -4,7 +4,7 @@ import { Storage } from "../../types/ZStorage";
 
 function DeleteStorage(Storages: Collection<Storage>): RequestHandler {
    const deleteStorage: RequestHandler = async (req, res) => {
-      const { ID: SID } = req.params;
+      const { SID } = req.params;
       if (!ObjectId.isValid(SID)) {
          res.status(400).json({ err: "invalid id" });
       }

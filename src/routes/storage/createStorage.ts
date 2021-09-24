@@ -4,8 +4,7 @@ import { Storage, StorageSchema } from "../../types/ZStorage";
 
 function CreateStorage(Storages: Collection<Storage>): RequestHandler {
    const createStorage: RequestHandler = async (req, res) => {
-      const data = req.body;
-      const parseRes = StorageSchema.safeParse(data);
+      const parseRes = StorageSchema.safeParse(req.body);
       if (!parseRes.success) {
          res.status(400).json(parseRes.error);
          return;
