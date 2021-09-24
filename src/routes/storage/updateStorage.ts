@@ -5,7 +5,7 @@ import { Storage, ZStorageSchema } from "../../types/ZStorage";
 function UpdateStorage(Storages: Collection<Storage>): RequestHandler {
    const updateStorage: RequestHandler = async (req, res) => {
       const { ID } = req.params;
-      const parsed = ZStorageSchema.safeParse(req.body);
+      const parsed = ZStorageSchema.partial().safeParse(req.body);
       if (!parsed.success) {
          res.status(400).json(parsed.error);
          return;
