@@ -1,6 +1,8 @@
 import express from "express";
 import { MongoClient, ObjectId } from "mongodb";
 import RequireJSON from "./middleware/requireJSON";
+import CreateItem from "./routes/item/createItem";
+import GetItems from "./routes/item/getItems";
 import CreateStorage from "./routes/storage/createStorage";
 import DeleteStorage from "./routes/storage/deleteStorage";
 import GetAll from "./routes/storage/getAll";
@@ -31,6 +33,10 @@ app.put("/storage/:ID", RequireJSON, UpdateStorage(Storages));
 app.get("/storage/:ID", GetStorage(Storages));
 
 app.delete("/storage/:ID", DeleteStorage(Storages));
+
+app.get("/storages/:SID/items", GetItems(Items));
+
+app.post("/storages/:SID/items", RequireJSON, CreateItem(Items));
 
 async function init() {
    await Client.connect();

@@ -11,8 +11,8 @@ function CreateStorage(Storages: Collection<Storage>): RequestHandler {
          return;
       }
       try {
-         await Storages.insertOne(parseRes.data);
-         res.sendStatus(201);
+         const action = await Storages.insertOne(parseRes.data);
+         res.status(201).json(action);
       } catch (error) {
          res.status(500).json(error);
       }
