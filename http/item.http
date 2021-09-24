@@ -10,3 +10,11 @@ Content-Type: application/json
     "name": "product",
     "price": 2.99
 }
+
+###
+PUT http://localhost:3000/items/614d4169ed364ee1b80ebcc5
+Content-Type: application/json
+
+{
+    "name": "updated Product"
+}
