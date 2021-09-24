@@ -1,0 +1,13 @@
+GET http://localhost:3000/storages/614d3b4ed344ffa8bc901bdd/compartments
+Accept: application/json
+
+###
+POST http://localhost:3000/storages/614d3b4ed344ffa8bc901bdd/compartments
+Content-Type: application/json
+
+{
+    "name": "ice compartment"
+}
+###
+GET http://localhost:3000/compartments/614de61043d2ca38f6aeb07c
+Accept: application/json

@@ -1,11 +1,15 @@
 import express from "express";
 import { MongoClient, ObjectId } from "mongodb";
 import RequireJSON from "./middleware/requireJSON";
-import CreateCompartment from "./routes/compartment/createCompartment";
-import GetCompartments from "./routes/compartment/getCompartments";
+import CreateStorageCompartment from "./routes/compartment/createStorageCompartment";
+import DeleteCompartment from "./routes/compartment/deleteCompartment";
+import GetCompartment from "./routes/compartment/getCompartment";
+import GetStorageCompartments from "./routes/compartment/getStorageCompartments";
+import UpdateCompartment from "./routes/compartment/updateCompartment";
 import CreateCompartmentItem from "./routes/item/createCompartmentItem";
 import CreateStorageItem from "./routes/item/createStorageItem";
 import DeleteItem from "./routes/item/deleteItem";
+import GetCompartmentItems from "./routes/item/getCompartmentItems";
 import GetItem from "./routes/item/getItem";
 import GetStorageItems from "./routes/item/getStorageItems";
 import UpdateItem from "./routes/item/updateItem";
@@ -52,13 +56,13 @@ app.get("/storages/:SID/items", GetStorageItems(Items));
 app.post("/storages/:SID/items", RequireJSON, CreateStorageItem(Items));
 
 // get compartments from a storage
-app.get("/storages/:SID/compartments/", GetCompartments(Compartments));
+app.get("/storages/:SID/compartments/", GetStorageCompartments(Compartments));
 
 // create a new compartment
 app.post(
    "/storages/:SID/compartments",
    RequireJSON,
-   CreateCompartment(Compartments)
+   CreateStorageCompartment(Compartments)
 );
 
 // create a new Item in compartment
@@ -78,16 +82,16 @@ app.put("/items/:ID", RequireJSON, UpdateItem(Items));
 app.delete("/items/:ID", DeleteItem(Items));
 
 // get compartment by ID
-app.get("/compartments/:CID");
+app.get("/compartments/:CID", GetCompartment(Compartments));
 
 // update compartment by ID
-app.put("/compartments/:CID");
+app.put("/compartments/:CID", RequireJSON, UpdateCompartment(Compartments));
 
 // delete compartment by ID
-app.delete("/compartments/:CID");
+app.delete("/compartments/:CID", DeleteCompartment(Compartments));
 
 // get items in compartment
-app.get("/compartments/:CID/items");
+app.get("/compartments/:CID/items", GetCompartmentItems(Items));
 
 async function init() {
    await Client.connect();

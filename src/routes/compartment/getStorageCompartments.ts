@@ -2,10 +2,10 @@ import { RequestHandler } from "express";
 import { Collection, ObjectId } from "mongodb";
 import { Compartment } from "../../types/ZCompartment";
 
-function GetCompartments(
+function GetStorageCompartments(
    Compartments: Collection<Compartment>
 ): RequestHandler {
-   const getCompartments: RequestHandler = async (req, res) => {
+   const getStorageCompartments: RequestHandler = async (req, res) => {
       const { SID } = req.params;
       if (!ObjectId.isValid(SID)) {
          res.status(400).json({ err: "Invalid ObjectId" });
@@ -21,7 +21,7 @@ function GetCompartments(
          res.status(500).json(error);
       }
    };
-   return getCompartments;
+   return getStorageCompartments;
 }
 
-export default GetCompartments;
+export default GetStorageCompartments;
