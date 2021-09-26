@@ -1,0 +1,17 @@
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "email": "test1@test.com",
+    "name": "test",
+    "pwd": "12345"
+}
+
+###
+POST http://localhost:3000/authenticate
+Content-Type: application/json
+
+{
+    "email": "test1@test.com",
+    "pwd": "1234"
+}

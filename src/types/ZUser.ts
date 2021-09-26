@@ -3,8 +3,9 @@ import { ZDocSchema } from "./ZDoc";
 import ZObjectId from "./ZObjectIdSchema";
 
 const ZUserSchema = z.object({
+   email: z.string().email(),
+   pwdHash: z.string(),
    name: z.string(),
-   accessGroupID: ZObjectId.create(),
 });
 
 type ZUser = z.infer<typeof ZUserSchema>;

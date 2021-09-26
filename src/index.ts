@@ -23,6 +23,8 @@ import { Item } from "./types/ZItem";
 import { Storage } from "./types/ZStorage";
 import { User } from "./types/ZUser";
 import AuthenticateUser from "./middleware/authenticateUser";
+import Authenticate from "./routes/auth/authenticate";
+import SignUp from "./routes/auth/signup";
 
 const app = express();
 
@@ -35,7 +37,16 @@ const Items = DB.collection<Item>("items");
 const Compartments = DB.collection<Compartment>("compartments");
 const Users = DB.collection<User>("users");
 
-app.use(express.json(), AuthenticateUser);
+app.use(
+   express.json(),
+   AuthenticateUser({ ignoreRoutes: ["/authenticate", "/signup"] })
+);
+
+// Authenticate a user with email & password
+app.post("/authenticate", Authenticate(Users));
+
+// Create a new User
+app.post("/signup", SignUp(Users));
 
 // Get all storages
 app.get("/storages", GetAll(Storages));
